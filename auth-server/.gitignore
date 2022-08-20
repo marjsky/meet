@@ -1,0 +1,11 @@
+# package directories
+node_modules
+jspm_packages
+
+# Serverless directories
+.serverless
+
+# environment variables
+config.json
+client_secret_644965081228-0o64bovo588j1rv8i2j9il1u14rev7jk.apps.googleusercontent.com.json
+
