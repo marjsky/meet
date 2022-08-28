@@ -22,6 +22,10 @@ describe('<Event /> component', () => {
     expect(EventWrapper.find('.event-date-location')).toHaveLength(1);
   });
 
-  
+  test('render default hide event details', () => {
+    expect(EventWrapper.state('showDetails')).toBe(false);
+  });
+
+
 })
 

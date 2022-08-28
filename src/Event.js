@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
 
 class Event extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      showDetails: false,
+    };
+  }
 
   render() {
     const { event } = this.props;
