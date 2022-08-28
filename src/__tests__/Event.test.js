@@ -11,11 +11,15 @@ describe('<Event /> component', () => {
   });
 
   test('render title in event item', () => {
-    expect(EventWrapper.find('.event-title')).toHaveLength(1);
+    expect(EventWrapper.find('.event')).toHaveLength(1);
   });
 
   test('render event summary', () => {
     expect(EventWrapper.find('.summary')).toHaveLength(1);
+  });
+
+  test('render event date and location', () => {
+    expect(EventWrapper.find('.event-date-location')).toHaveLength(1);
   });
 
   
