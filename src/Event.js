@@ -26,8 +26,11 @@ class Event extends Component {
           {event.start.timeZone}
           {event.start.location}
         </p>
+        {this.state.showDetails && (
+          <p className='description'>{event.description}</p>
+        )}
         <button className='show-button' onClick={this.handleDetailClick}>
-  
+          {!this.state.showDetails ? 'Show Details' : 'Hide Details'}
         </button>
       </div>
     );
