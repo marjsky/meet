@@ -31,4 +31,13 @@ describe('<Event /> component', () => {
     expect(EventWrapper.state('showDetails')).toBe(false);
   });
 
+  test('render hidden event details', () => {
+    expect(EventWrapper.find('.description')).toHaveLength(0);
+  });
+
+  test('render show event details after clicked', () => {
+    EventWrapper.find('.show-button').simulate('click');
+    expect(EventWrapper.find('.description')).toHaveLength(1);
+  });
+
 });
