@@ -21,4 +21,8 @@ describe('<Event /> component', () => {
     expect(EventWrapper.find('.event-dateTime-location')).toHaveLength(1);
   });
 
+  test('render false on show details', () => {
+    expect(EventWrapper.state('showDetails')).toBe(false);
+  });
+
 });
