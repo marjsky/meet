@@ -25,4 +25,10 @@ describe('<Event /> component', () => {
     expect(EventWrapper.state('showDetails')).toBe(false);
   });
 
+  test('again click showDetails to hides details', () => {
+    EventWrapper.setState({ showDetails: true });
+    EventWrapper.find('.show-button').simulate('click');
+    expect(EventWrapper.state('showDetails')).toBe(false);
+  });
+
 });
