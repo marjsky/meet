@@ -9,6 +9,12 @@ class Event extends Component {
     };
   }
 
+  handleDetailClick = () => {
+    this.setState({
+      showDetails: !this.state.showDetails
+    });
+  };
+
   render() {
     const { event } = this.props;
 
@@ -20,6 +26,9 @@ class Event extends Component {
           {event.start.timeZone}
           {event.start.location}
         </p>
+        <button className='show-button' onClick={this.handleDetailClick}>
+  
+        </button>
       </div>
     );
   }
