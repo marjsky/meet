@@ -4,13 +4,12 @@ import Event from '../Event';
 import { mockData } from '../mock-data';
 
 describe('<Event /> component', () => {
-  let event, EventWrapper;
+  let EventWrapper;
   beforeAll(() => {
-    event = mockData[0];
-    EventWrapper = shallow(<Event event={event}/>);
+    EventWrapper = shallow(<Event event={mockData[0]} />);
   });
 
-  test('render title in event item', () => {
+  test('render list of events', () => {
     expect(EventWrapper.find('.event')).toHaveLength(1);
   });
 
@@ -19,13 +18,7 @@ describe('<Event /> component', () => {
   });
 
   test('render event date and location', () => {
-    expect(EventWrapper.find('.event-date-location')).toHaveLength(1);
+    expect(EventWrapper.find('.event-dateTime-location')).toHaveLength(1);
   });
 
-  test('render default hide event details', () => {
-    expect(EventWrapper.state('showDetails')).toBe(false);
-  });
-
-
-})
-
+});
