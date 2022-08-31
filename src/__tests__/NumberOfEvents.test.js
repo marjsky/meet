@@ -12,5 +12,10 @@ describe('<NumberOfEvents /> component', () => {
   test('component render', () => {
     expect(NumberOfEventsWrapper.find('.numberOfEvents')).toHaveLength(1);
   });
+  
+  test('render label number of events', () => {
+    expect(NumberOfEventsWrapper.find('.label-events')).toHaveLength(1);
+  });
+  
 
 });
