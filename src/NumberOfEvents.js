@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 
 class NumberOfEvents extends Component {
+  constructor() {
+    super();
+    this.state = { countEvents: 32 }
+  };
 
   render () {
     return (
@@ -10,7 +14,8 @@ class NumberOfEvents extends Component {
           <input
             type='number'
             className='input-number'
-
+            value={this.state.countEvents}
+            
             />
         </label>
       </div>
