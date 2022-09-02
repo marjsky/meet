@@ -7,15 +7,16 @@ import NumberOfEvents from './NumberOfEvents';
 
 class App extends Component {
   state = {
-    events: []
+    events: [],
+    locations: []
   }
 
   render() {
     return (
       <div className="App">
-        <CitySearch />
+        <CitySearch locations={this.state.locations} />
         <NumberOfEvents />
-        <EventList events={this.state.events}/>        
+        <EventList events={this.state.events} />        
       </div>
     );
   }
