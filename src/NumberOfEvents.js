@@ -3,17 +3,23 @@ import React, { Component } from "react";
 class NumberOfEvents extends Component {
   constructor() {
     super();
-    this.state = { countEvents: 32, errorText: '' }
+    this.state = { countEvents: 32 }
   };
 
   handleInputChange = (event) => {
-    const value = event.target.value;
-    if ((value < 1) || (value > 33)) {
-      this.setState({ errorText: 'Limit range  from 1 to 32'});
-    } else {
+    let value = parseInt(event.target.value);
+    if (value > 0 && value <= 32) {
       this.setState({ countEvents: value});
+    } else if (value > 32) {
+      this.setState({ countEvents: 32});
+      value = 32;
+    } else {
+      this.setState({ countEvents: NaN});
+      value = NaN;
     }
-  }
+    this.props.updateEvents(undefined, value);
+  };
+
   render () {
     return (
       <div className="numberOfEvents">
