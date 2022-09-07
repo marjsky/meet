@@ -7,6 +7,10 @@ import NumberOfEvents from '../NumberOfEvents';
 import { mockData } from '../mock-data';
 import { extractLocations, getEvents } from '../api';
 
+/**
+ *  UNIT TESTING
+ */
+
 describe('<App /> component', () => {
   let AppWrapper;
   beforeAll(() => {
@@ -28,11 +32,22 @@ describe('<App /> component', () => {
 
 });
 
+/**
+ *  INTEGRATION TESTING
+ */
+
 describe('<App /> integration', () => {
   test('App passes "event" state as a prop to EventList', () => {
     const AppWrapper = mount(<App />);
+    /**
+     * do not let the state of events become undefined
+     * make sure test not pass both states == 'undefined'
+     */
     const AppEventsState = AppWrapper.state('events');
     expect(AppEventsState).not.toEqual(undefined);
+    /**
+     * compare EventList's props with App's events state
+     */
     expect(AppWrapper.find(EventList).props().events).toEqual(AppEventsState);
     AppWrapper.unmount();
   });
