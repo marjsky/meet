@@ -15,10 +15,6 @@ class App extends Component {
     countEvents: 24
   }
 
-
-  // https://github.com/kir-net/meet/commit/9d8710b1d23d54e2d41383f4ea91fbf47716d606#diff-3d74dddefb6e35fbffe3c76ec0712d5c416352d9449e2fcc8210a9dee57dff67R20
-
-
   async componentDidMount() {
     this.mounted = true;
     getEvents().then((events) => {
