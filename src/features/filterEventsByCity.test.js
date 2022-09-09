@@ -13,8 +13,8 @@ const feature = loadFeature('./src/features/filterEventsByCity.feature');
 // to define the code for that file
 defineFeature(feature, test => {
 
-  test('When user hasn’t searched for a city, show upcoming events from all cities.', ({ given, when, then }) => {
-    given('user hasn’t searched for any city', () => {
+  test("When user hasn't searched for a city, show upcoming events from all cities.", ({ given, when, then }) => {
+    given("user hasn't searched for any city", () => {
 
     });
 
