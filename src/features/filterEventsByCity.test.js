@@ -7,7 +7,7 @@ import { extractLocations } from '../api';
 
 import { loadFeature, defineFeature } from 'jest-cucumber';
 
-// to load Fherkin file
+// to load Gherkin file
 const feature = loadFeature('./src/features/filterEventsByCity.feature'); 
 
 // to define the code for that file
