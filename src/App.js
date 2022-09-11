@@ -12,7 +12,7 @@ class App extends Component {
     events: [],
     locations: [],
     locationSelected: 'all',
-    countEvents: 24
+    countEvents: 32
   }
 
   async componentDidMount() {

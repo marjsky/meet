@@ -1,5 +1,5 @@
 import { loadFeature, defineFeature } from 'jest-cucumber';
-import { mount, shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import App from '../App';
 import Event from '../Event';
 import { mockData } from '../mock-data';
@@ -63,7 +63,7 @@ defineFeature(feature, test => {
     then('the event element detail will be collapsed.', () => {
       expect(AppWrapper.find('.event .description')).toHaveLength(0);
     });
-    
+
   });
 
 });
