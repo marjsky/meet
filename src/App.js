@@ -5,6 +5,7 @@ import CitySearch from './CitySearch';
 
 import NumberOfEvents from './NumberOfEvents';
 import { extractLocations, getEvents } from './api';
+import { WarningAlert } from './Alert';
 import './nprogress.css';
 
 class App extends Component {
@@ -25,6 +26,16 @@ class App extends Component {
         });
       }
     });
+
+    if (!navigator.onLine) {
+      this.setState({
+        warningText: 'Currently you are offline, data unable updated.',
+      });
+    } else {
+      this.setState({
+        warningText: '',
+      });
+    }
   }
 
   updateEvents = (location, maxNumEvents) => {
@@ -57,6 +68,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <WarningAlert text={this.state.warningText} />
         <h1>Meet App</h1>
         <h3>Choose your nearest city</h3>
         <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
