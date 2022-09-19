@@ -18,6 +18,12 @@ class App extends Component {
 
   async componentDidMount() {
     this.mounted = true;
+    const isOffline = navigator.onLine ? false : true;
+    this.setState({
+      offlineInfo: isOffline
+          ? "No internet connection. Data is loaded from cache."
+          : null
+    });
     getEvents().then((events) => {
       if (this.mounted) {
         this.setState({ 
@@ -27,15 +33,15 @@ class App extends Component {
       }
     });
 
-    if (!navigator.onLine) {
-      this.setState({
-        warningText: 'Currently you are offline, data unable updated.',
-      });
-    } else {
-      this.setState({
-        warningText: '',
-      });
-    }
+    // if (!navigator.onLine) {
+    //   this.setState({
+    //     warningText: 'Currently you are offline, data unable updated.',
+    //   });
+    // } else {
+    //   this.setState({
+    //     warningText: '',
+    //   });
+    // }
   }
 
   updateEvents = (location, maxNumEvents) => {
@@ -53,10 +59,14 @@ class App extends Component {
       const locationEvents = (location === 'all') 
       ? events 
       : events.filter((event) => event.location === location);
+      const isOffline = navigator.onLine ? false : true;
       this.setState({
         events: locationEvents.slice(0, maxNumEvents),
         countEvents: maxNumEvents,
-        locationSelected: location
+        locationSelected: location,
+        offlineInfo: isOffline
+        ? "No internet connection. Data is loaded from cache."
+        : null
       });
     });
   }
@@ -68,9 +78,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <WarningAlert text={this.state.warningText} />
+        <div className="warningAlert">
+            <WarningAlert text={this.state.offlineInfo} />
+        </div>
         <h1>Meet App</h1>
-        <h3>Choose your nearest city</h3>
         <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
         <NumberOfEvents events={this.state.events} updateEvents={this.updateEvents} />
         <EventList events={this.state.events} />        
