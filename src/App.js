@@ -7,6 +7,7 @@ import NumberOfEvents from './NumberOfEvents';
 import { extractLocations, getEvents } from './api';
 import { WarningAlert } from './Alert';
 import './nprogress.css';
+import { CartesianGrid, Scatter, ScatterChart, Tooltip, XAxis, YAxis } from 'recharts';
 
 class App extends Component {
   state = {
@@ -75,6 +76,17 @@ class App extends Component {
     this.mounted = false;
   }
 
+  // function gets total number of events happening in each city
+  getData = () => {
+    const {locations, events} = this.state;
+    const data = locations.map((location)=>{
+      const number = events.filter((event) => event.location === location).length
+      const city = location.split('.').shift()
+      return {city, number};
+    })
+    return data;
+  }
+
   render() {
     return (
       <div className="App">
@@ -84,6 +96,17 @@ class App extends Component {
         <h1>Meet App</h1>
         <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
         <NumberOfEvents events={this.state.events} updateEvents={this.updateEvents} />
+        <ScatterChart width={800} height={400}
+          margin={{ top: 20, right: 20, bottom: 10, left: 10 }}>
+          <CartesianGrid />
+          <XAxis type='category' dataKey="city" name="city" />
+          <YAxis type='number' dataKey="number" name="number of events" allowDecimals={false} />
+          
+          <Tooltip cursor={{ strokeDasharray: '3 3' }} />
+          
+          <Scatter data={this.getData()} fill="#8884d8" />
+          {/* <Scatter name="B school" data={data02} fill="#82ca9d" /> */}
+        </ScatterChart>
         <EventList events={this.state.events} />        
       </div>
     );
