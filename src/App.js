@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import './App.css';
 import EventList from './EventList';
 import CitySearch from './CitySearch';
@@ -8,8 +8,9 @@ import { extractLocations, getEvents } from './api';
 //import { WarningAlert } from './Alert';
 import './nprogress.css';
 import { CartesianGrid, ResponsiveContainer, Scatter, ScatterChart, Tooltip, XAxis, YAxis } from 'recharts';
+import EventGenre from './EventGenre';
 
-class App extends Component {
+export default class App extends PureComponent {
   state = {
     events: [],
     locations: [],
@@ -105,31 +106,33 @@ class App extends Component {
         />
         <h4>Events in each city</h4>
 
-        <ResponsiveContainer height={400}>
-          <ScatterChart 
-            margin={{ top: 20, right: 20, bottom: 10, left: 10 }}>
-            <CartesianGrid />
-            <XAxis 
-              type='category' 
-              dataKey="city" 
-              name="city" 
-            />
-            <YAxis 
-              allowDecimals={false}
-              type='number' 
-              dataKey="number" 
-              name="number of events"
-            />
-            
-            <Tooltip cursor={{ strokeDasharray: '3 3' }} />
-            
-            <Scatter data={this.getData()} fill="#8884d8" />
-          </ScatterChart>
-        </ResponsiveContainer>
+        <div className='data-vis-wrapper'>
+          <EventGenre events={events} />
+          <ResponsiveContainer height={400}>
+            <ScatterChart 
+              margin={{ top: 20, right: 20, bottom: 10, left: 10 }}>
+              <CartesianGrid />
+              <XAxis 
+                type='category' 
+                dataKey="city" 
+                name="city" 
+              />
+              <YAxis 
+                allowDecimals={false}
+                type='number' 
+                dataKey="number" 
+                name="number of events"
+              />
+              
+              <Tooltip cursor={{ strokeDasharray: '3 3' }} />
+              
+              <Scatter data={this.getData()} fill="#8884d8" />
+            </ScatterChart>
+          </ResponsiveContainer>
+        </div>
+
         <EventList events={events} />        
       </div>
     );
   }
 }
-
-export default App;
