@@ -1,5 +1,5 @@
 # MEET APP
-
+![Meet_App_Image](public/Screenshot_meet.png)
 ## Description: 
 
 To build a serverless, progressive web application (PWA) wtih React using a test-driven development technique. The Applicatoin uses the Google Calendar API to fetch upcoming events.
